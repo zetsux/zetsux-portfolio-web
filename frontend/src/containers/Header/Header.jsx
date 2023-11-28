@@ -1,8 +1,8 @@
-import React from 'react';
-import './Header.scss';
-import { motion } from 'framer-motion';
-import { images } from '../../constants';
-import { AppWrap } from '../../wrapper';
+import React from "react";
+import "./Header.scss";
+import { motion } from "framer-motion";
+import { images } from "../../constants";
+import { AppWrap } from "../../wrapper";
 
 const scaleVariants = {
   whileInView: {
@@ -10,10 +10,10 @@ const scaleVariants = {
     opacity: [0, 1],
     transition: {
       duration: 1,
-      ease: 'easeInOut'
-    }
-  }
-}
+      ease: "easeInOut",
+    },
+  },
+};
 
 const Header = () => {
   return (
@@ -33,8 +33,8 @@ const Header = () => {
           </div>
 
           <div className="tag-cmp app__flex">
-              <p className="p-text">Undergraduate Informatics Student</p>
-              <p className="p-text">Aspiring Programmer / Developer</p>
+            <p className="p-text">Undergraduate Informatics Student</p>
+            <p className="p-text">Aspiring Programmer / Developer</p>
           </div>
         </div>
       </motion.div>
@@ -47,7 +47,7 @@ const Header = () => {
         <img src={images.profile} alt="Profile Img" />
         <motion.img
           whileInView={{ scale: [0, 1] }}
-          transition={{ duration: 1, ease: 'easeInOut' }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="overlay_circle"
           src={images.circle}
           alt="Profile Circle"
@@ -59,7 +59,7 @@ const Header = () => {
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[images.python, images.node, images.api].map((circle, index) => (
+        {[images.node, images.go, images.python].map((circle, index) => (
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
             <img src={circle} alt="Circle" />
           </div>
@@ -67,6 +67,6 @@ const Header = () => {
       </motion.div>
     </div>
   );
-}
+};
 
-export default AppWrap(Header, 'home');
+export default AppWrap(Header, "home");
