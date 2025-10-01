@@ -19,6 +19,7 @@
 /frontend.env.development.local
 /frontend.env.test.local
 /frontend.env.production.local
+/frontend/.env
 
 /frontendnpm-debug.log*
 /frontendyarn-debug.log*
