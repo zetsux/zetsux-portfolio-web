@@ -4,6 +4,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
+import { images } from '../../constants';
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -19,34 +20,50 @@ const Testimonials = () => {
 
   const handleClick = (index) => {
     setCurrentIndex(index);
-  }
+  };
 
   const curTesti = testimonials[currentIndex];
 
   return (
     <>
-      <h2 className="head-text" style={{ marginBottom: 30 }}>Some <span>Testimonials</span> & <span>Comments</span> About Me</h2>
+      <h2 className='head-text' style={{ marginBottom: 30 }}>
+        Some <span>Testimonials</span> & <span>Comments</span> About Me
+      </h2>
 
       {testimonials.length && (
         <>
-          <div className="app__testimonial-item app__flex">
-            <img src={urlFor(curTesti.imageurl)} alt="Testimonial" />
+          <div className='app__testimonial-item app__flex'>
+            <img
+              src={curTesti?.imgurl ? urlFor(curTesti.imgurl) : images.people}
+              alt='Testimonial'
+              onError={(e) => (e.target.src = images.people)}
+            />
 
-            <div className="app__testimonial-content">
-              <p className="p-text">{curTesti.feedback}</p>
+            <div className='app__testimonial-content'>
+              <p className='p-text'>{curTesti.feedback}</p>
               <div>
-                <h4 className="bold-text">{curTesti.name}</h4>
-                <h5 className="p-text">{curTesti.company}</h5>
+                <h4 className='bold-text'>{curTesti.name}</h4>
+                <h5 className='p-text'>{curTesti.company}</h5>
               </div>
             </div>
           </div>
 
-          <div className="app__testimonial-btns app__flex">
-            <div className="app__flex" onClick={() => handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)}>
+          <div className='app__testimonial-btns app__flex'>
+            <div
+              className='app__flex'
+              onClick={() =>
+                handleClick(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)
+              }
+            >
               <HiChevronLeft />
             </div>
 
-            <div className="app__flex" onClick={() => handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)}>
+            <div
+              className='app__flex'
+              onClick={() =>
+                handleClick(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)
+              }
+            >
               <HiChevronRight />
             </div>
           </div>
@@ -54,10 +71,10 @@ const Testimonials = () => {
       )}
     </>
   );
-}
+};
 
 export default AppWrap(
-  MotionWrap(Testimonials, 'app__testimonial'), 
+  MotionWrap(Testimonials, 'app__testimonial'),
   'testimonials',
-  "app__primarybg"
+  'app__primarybg'
 );
