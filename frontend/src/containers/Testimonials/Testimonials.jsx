@@ -26,7 +26,7 @@ const Testimonials = () => {
 
   return (
     <>
-      <h2 className='head-text' style={{ marginBottom: 30 }}>
+      <h2 className='head-text' style={{ marginBottom: 60 }}>
         Some <span>Testimonials</span> & <span>Comments</span> About Me
       </h2>
 
