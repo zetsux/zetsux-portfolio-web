@@ -34,7 +34,7 @@ const Projects = () => {
   return (
     <>
       <h2 className='head-text'>
-        <span>Check Out</span> Some of My Latest <span>Projects</span>
+        A <span>Glimpse</span> into My Latest <span>Projects</span>
       </h2>
 
       <div className='app__work-filter'>
@@ -84,6 +84,7 @@ const Projects = () => {
                     whileHover={{ scale: [1, 0.9] }}
                     transition={{ duration: 0.25 }}
                     className='app__flex'
+                    style={{ display: project.codeLink ? 'flex' : 'none' }}
                   >
                     <AiFillGithub />
                   </motion.div>

@@ -25,55 +25,51 @@ const Skills = () => {
 
   return (
     <>
-      <h2 className="head-text">My <span>Skills</span> & <span>Experiences</span></h2>
+      <h2 className='head-text'>
+        The <span>Tech</span> I Speak, The <span>Stories</span> I Live
+      </h2>
 
-      <div className="app__skills-container">
-        <motion.div className="app__skills-list">
+      <div className='app__skills-container'>
+        <motion.div className='app__skills-list'>
           {skills.map((skill) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
-              className="app__skills-item app__flex"
+              className='app__skills-item app__flex'
               key={skill.name}
             >
-              <div
-                className="app__flex"
-                style={{ backgroundColor: skill.bgColor }}
-              >
+              <div className='app__flex' style={{ backgroundColor: skill.bgColor }}>
                 <img src={urlFor(skill.icon)} alt={skill.name} />
               </div>
-              <p className="p-text">{skill.name}</p>
+              <p className='p-text'>{skill.name}</p>
             </motion.div>
           ))}
         </motion.div>
-        <div className="app__skills-exp">
+        <div className='app__skills-exp'>
           {experiences.map((experience) => (
-            <motion.div
-              className="app__skills-exp-item"
-              key={experience.year}
-            >
-              <div className="app__skills-exp-year">
-                <p className="bold-text">{experience.year}</p>
+            <motion.div className='app__skills-exp-item' key={experience.year}>
+              <div className='app__skills-exp-year'>
+                <p className='bold-text'>{experience.year}</p>
               </div>
-              <motion.div className="app__skills-exp-works">
+              <motion.div className='app__skills-exp-works'>
                 {experience.works.map((work) => (
                   <>
                     <motion.div
                       whileInView={{ opacity: [0, 1] }}
                       transition={{ duration: 0.5 }}
-                      className="app__skills-exp-work"
+                      className='app__skills-exp-work'
                       id={work.name}
                       key={work.name}
                     >
-                      <h4 className="bold-text">{work.name}</h4>
-                      <p className="p-text">{work.company}</p>
+                      <h4 className='bold-text'>{work.name}</h4>
+                      <p className='p-text'>{work.company}</p>
                     </motion.div>
-                    
+
                     <Tooltip
                       anchorId={work.name}
-                      effect="solid"
-                      arrowColor="#fff"
-                      className="skills-tooltip"
+                      effect='solid'
+                      arrowColor='#fff'
+                      className='skills-tooltip'
                     >
                       {work.desc}
                     </Tooltip>
@@ -88,8 +84,4 @@ const Skills = () => {
   );
 };
 
-export default AppWrap(
-  MotionWrap(Skills, 'app__skills'), 
-  'skills',
-  "app__whitebg"
-);
+export default AppWrap(MotionWrap(Skills, 'app__skills'), 'skills', 'app__whitebg');

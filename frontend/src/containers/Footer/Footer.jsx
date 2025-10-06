@@ -6,7 +6,7 @@ import { AppWrap, MotionWrap } from '../../wrapper';
 // import { client } from '../../client';
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: ''});
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +16,7 @@ const Footer = () => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
-  }
+  };
 
   const scriptURL = process.env.REACT_APP_SHEET_SCRIPT_URL;
 
@@ -29,13 +29,13 @@ const Footer = () => {
     formToSheet.append('message', message);
 
     console.log(scriptURL);
-  
-    fetch(scriptURL, { method: 'POST', body: formToSheet})
+
+    fetch(scriptURL, { method: 'POST', body: formToSheet })
       .then(() => {
         setLoading(false);
         setIsSubmitted(true);
       })
-      .catch(error => console.error('Error!', error.message))
+      .catch((error) => console.error('Error!', error.message));
 
     // const contact = {
     //   _type: 'contact',
@@ -49,51 +49,77 @@ const Footer = () => {
     //     setLoading(false);
     //     setIsSubmitted(true);
     //   })
-  }
+  };
 
   return (
     <>
-      <h2 className="head-text">Need <span>anything</span>? Feel free to <span>Contact</span> me!</h2>
+      <h2 className='head-text'>
+        Now It's <span>Your Turn</span>, Feel Free to <span>Contact</span> Me!
+      </h2>
 
-      <div className="app__footer-cards">
-        <div className="app__footer-card">
-          <img src={images.email} alt="Email" />
-          <a href="mailto:kevnhalim@gmail.com" className="p-text">
-            kevnhalim@gmail.com
-          </a>
-        </div>
+      <div className='app__footer-cards'>
+        <a
+          href='mailto:kevnhalim@gmail.com'
+          className='app__footer-card'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <img src={images.email} alt='Email' />
+          <p className='p-text'>kevnhalim@gmail.com</p>
+        </a>
 
-        <div className="app__footer-card">
-          <img src={images.mobile} alt="LINE" />
-          <a href="https://line.me/ti/p/~kvnnh" className="p-text">
-            Kevin Nathanael
-          </a>
-        </div>
+        <a
+          href='https://line.me/ti/p/~kvnnh'
+          className='app__footer-card'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <img src={images.mobile} alt='LINE' />
+          <p className='p-text'>Kevin Nathanael</p>
+        </a>
       </div>
 
       {!isSubmitted ? (
-        <div className="app__footer-form app__flex">
-          <div className="app__flex">
-            <input className="p-text" type="text" placeholder="Enter your name.." name="name" value={name} onChange={handleChangeInput} />
-          </div>
-          <div className="app__flex">
-            <input className="p-text" type="email" placeholder="Enter your email.." name="email" value={email} onChange={handleChangeInput} />
-          </div>
-          <div>
-            <textarea
-              className="p-text"
-              placeholder="Enter your message.."
-              value={message}
-              name="message"
+        <div className='app__footer-form app__flex'>
+          <div className='app__flex'>
+            <input
+              className='p-text'
+              type='text'
+              placeholder='Enter your name..'
+              name='name'
+              value={name}
               onChange={handleChangeInput}
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
+          <div className='app__flex'>
+            <input
+              className='p-text'
+              type='email'
+              placeholder='Enter your email..'
+              name='email'
+              value={email}
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div>
+            <textarea
+              className='p-text'
+              placeholder='Enter your message..'
+              value={message}
+              name='message'
+              onChange={handleChangeInput}
+            />
+          </div>
+          <button type='button' className='p-text' onClick={handleSubmit}>
+            {!loading ? 'Send Message' : 'Sending...'}
+          </button>
         </div>
       ) : (
         <div>
-          <h3 className="head-text" style={{ marginTop: 20 }}>
-            <span>Thanks</span> for reaching out. I'll get back to you!
+          <h3 className='head-text' style={{ marginTop: 40 }}>
+            <span>Thanks</span> for reaching out.
+            <br />
+            I'll get back to you!
           </h3>
         </div>
       )}
@@ -101,8 +127,4 @@ const Footer = () => {
   );
 };
 
-export default AppWrap(
-  MotionWrap(Footer, 'app__footer'),
-  'contact',
-  'app__whitebg',
-);
+export default AppWrap(MotionWrap(Footer, 'app__footer'), 'contact', 'app__whitebg');
